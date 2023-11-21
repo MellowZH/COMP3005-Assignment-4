@@ -10,6 +10,7 @@ conn = psycopg2.connect(database = DATABASE_NAME,
 
 # Open a cursor to perform database operations
 cur = conn.cursor()
+
 # Execute a command: create students table
 cur.execute("""CREATE TABLE students(
             student_id SERIAL PRIMARY KEY,
