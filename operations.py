@@ -34,7 +34,27 @@ def getAllStudents():
         enrollment_date = enrollment_date.strftime("%Y-%m-%d")
         print(f"{student_id:<12} {first_name:<12} {last_name:<12} {email:<28} {enrollment_date:<15}")
 
+    # Close cursor
+    cur.close()
 
+def addStudent(first_name, last_name, email, enrollment_date):
+    # Open a cursor to perform database operations
+    cur = conn.cursor()
+
+    # Execute a command: insert data into students table
+    try:
+        cur.execute(f"""INSERT INTO students (first_name, last_name, email, enrollment_date) 
+                        VALUES('{first_name}','{last_name}','{email}','{enrollment_date}')""")
+        # Make the changes to the database persistent
+        conn.commit()
+        print('Success!')
+        
+    except Exception as error:
+        print("ERROR:", error)
+    
+    # Close cursor
+    cur.close()
+    
 if __name__ == '__main__':
     args = sys.argv
     globals()[args[1]](*args[2:])
