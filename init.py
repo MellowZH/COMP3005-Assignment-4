@@ -1,7 +1,7 @@
 import psycopg2
 from postgresConfig import *
 
-# Open a connection to the postgres database
+# Open a connection to the postgres database using parameters from config file
 conn = psycopg2.connect(database = DATABASE_NAME, 
                         user = USER_NAME, 
                         host= HOST,
