@@ -15,3 +15,4 @@ There are 4 operations that can be preformed. They are executed by the following
 4. deleteStudent(student_id): Deletes the record of the student with the specified student_id.
 
 To run one of these operations, simply run `python operations.py {function} {args}`
+Ex: `python operations.py addStudent Zack Hollmann zh@gmail.com 2023-11-21`
