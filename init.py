@@ -1,11 +1,12 @@
 import psycopg2
+from postgresConfig import *
 
-
-conn = psycopg2.connect(database = "Assignment 4", 
-                        user = "postgres", 
-                        host= 'localhost',
-                        password = "password",
-                        port = 5432)
+# Open a connection to the postgres database
+conn = psycopg2.connect(database = DATABASE_NAME, 
+                        user = USER_NAME, 
+                        host= HOST,
+                        password = PASSWORD,
+                        port = PORT)
 
 # Open a cursor to perform database operations
 cur = conn.cursor()
