@@ -11,16 +11,21 @@ conn = psycopg2.connect(database = DATABASE_NAME,
 # Open a cursor to perform database operations
 cur = conn.cursor()
 
-# Execute a command: create students table
-cur.execute("""CREATE TABLE students(
-            student_id SERIAL PRIMARY KEY,
-            first_name TEXT NOT NULL,
-            last_name TEXT NOT NULL,
-            email TEXT UNIQUE NOT NULL,
-            enrollment_date DATE)
-            """)
-# Make the changes to the database persistent
-conn.commit()
+try:
+    # Execute a command: create students table
+    cur.execute("""CREATE TABLE students(
+                student_id SERIAL PRIMARY KEY,
+                first_name TEXT NOT NULL,
+                last_name TEXT NOT NULL,
+                email TEXT UNIQUE NOT NULL,
+                enrollment_date DATE)
+                """)
+    # Make the changes to the database persistent
+    conn.commit()
+    print('Success!')
+
+except Exception as error:
+    print("ERROR:", error)
 
 # Execute a command: insert initial data into students table
 cur.execute("""INSERT INTO students (first_name, last_name, email, enrollment_date) VALUES
