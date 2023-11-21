@@ -48,7 +48,7 @@ def addStudent(first_name, last_name, email, enrollment_date):
         # Make the changes to the database persistent
         conn.commit()
         print('Success!')
-        
+
     except Exception as error:
         print("ERROR:", error)
     
@@ -57,4 +57,6 @@ def addStudent(first_name, last_name, email, enrollment_date):
     
 if __name__ == '__main__':
     args = sys.argv
+
+    #Get cmd line arguments and pass them to the desired function
     globals()[args[1]](*args[2:])
